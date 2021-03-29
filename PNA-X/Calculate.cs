@@ -334,7 +334,7 @@ namespace PNA_X
 
                         VAC.Write($"SENS:FREQ {Form1.freqList_freq[i] * Math.Pow(10, 9)}");
 
-                        Thread.Sleep(60);
+                        Thread.Sleep(1000);
 
                         if (Form1.freqList_freq[i] <= 0.3)
                         {

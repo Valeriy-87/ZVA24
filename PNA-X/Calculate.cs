@@ -75,9 +75,14 @@ namespace PNA_X
 
                 CNT.Timeout = 20000;
                 VAC.Timeout = 20000;
+
+                CNT.Write("*RST");
                 VAC.Write("*RST");
 
                 VAC.Write($"SENS:SWE:TYPE CW");
+                CNT.Write($"SENS:ACQ:APER 300ms");
+
+                VAC.Write("SOUR1:POW 3");
 
                 string str1;
                 string result;
@@ -334,17 +339,21 @@ namespace PNA_X
 
                         VAC.Write($"SENS:FREQ {Form1.freqList_freq[i] * Math.Pow(10, 9)}");
 
-                        Thread.Sleep(1000);
+                        Thread.Sleep(100);
 
                         if (Form1.freqList_freq[i] <= 0.3)
                         {
-                            str1 = CNT.Query("MEAS:FREQ?  (@1)n").Replace("\n", "").Replace(".", ",");
+                            str1 = CNT.Query("MEAS:FREQ? (@1)n").Replace("\n", "").Replace(".", ",");
+                            CNT.Write($"SENS:ACQ:APER 100ms");
+                            str1 = CNT.Query("READ:FREQ? (@1)n").Replace("\n", "").Replace(".", ",");
                         }
                         else
                         {
-                            str1 = CNT.Query("MEAS:FREQ?  (@3)n").Replace("\n", "").Replace(".", ",");
+                            str1 = CNT.Query("MEAS:FREQ? (@3)n").Replace("\n", "").Replace(".", ",");
+                            CNT.Write($"SENS:ACQ:APER 100ms");
+                            str1 = CNT.Query("READ:FREQ? (@3)n").Replace("\n", "").Replace(".", ",");
                         }
-
+                    
                         str1 = (Convert.ToDouble(str1) * Math.Pow(10, -9)).ToString();
 
                         if (Math.Abs(((Form1.freqList_freq[i] - Convert.ToDouble(str1)) / (Form1.freqList_freq[i]))) <= 8 * Math.Pow(10, -6))

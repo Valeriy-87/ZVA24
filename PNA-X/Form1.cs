@@ -1828,7 +1828,7 @@ namespace PNA_X
                 {
                     sw.WriteLine();
 
-                    if (number_port[i] == 0)
+                    if (number_port[i] == 1)
                     {
                         string_port = "Порт 1-2";
                         sw.WriteLine("Порт 1-2");
@@ -1879,7 +1879,7 @@ namespace PNA_X
 
                         for (int ii = 0; ii < 2; ii++)
                         {
-                            if (number_port[i] == 0)
+                            if (number_port[i] == 1)
                             {
                                 if (ii == 0)
                                 {
@@ -2019,7 +2019,7 @@ namespace PNA_X
                                     result = "Нет";
                                 }
 
-                                if (number_port[i] == 0)
+                                if (i == 0)
                                 {
                                     if (ii == 0)
                                     {                                        
@@ -2128,7 +2128,7 @@ namespace PNA_X
                                     result = "Нет";
                                 }
 
-                                if (number_port[i] == 0)
+                                if (i == 0)
                                 {
                                     if (ii == 0)
                                     {

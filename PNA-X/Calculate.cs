@@ -567,6 +567,8 @@ namespace PNA_X
 
                                 mean = mean / cout_mean;
 
+                                mean -= 10;
+
                                 number = l;
 
                                 if (mean <= dopusk[ll - 1])

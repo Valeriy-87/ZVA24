@@ -1182,7 +1182,7 @@ namespace PNA_X
 
                 sw.WriteLine();
 
-                sw.WriteLine("ZVA8");
+                sw.WriteLine("ZVA24");
                 sw.WriteLine();
 
                 string[] temp = path.Split('\\');
